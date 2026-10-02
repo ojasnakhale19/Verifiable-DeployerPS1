@@ -302,7 +302,6 @@ It also references the `AuditRegistry` through `IAuditRegistry` and stores addit
 
 ![Deployment Verification](frontend/Verify.png)
 
-> Add your actual project screenshots to `docs/images/` using the filenames above.
 
 The frontend contains Dashboard, Verify, Register, Deployments, Audit Approval, and Artifact Hash interfaces.
 
@@ -463,10 +462,6 @@ This is currently a reference/demo implementation.
 * The chain ID is currently fixed to Sepolia `11155111`.
 * The Solidity registries are not yet wired directly into the backend persistence layer.
 
-These limitations are documented in the project specification.
-
-For production deployment, the project should use a persistent database, authentication/authorization, rate limiting, secure secret management, and direct integration with the Solidity registries.
-
 ---
 
 #  Future Improvements
@@ -484,21 +479,10 @@ For production deployment, the project should use a persistent database, authent
 
 ---
 
-#  Security Philosophy
-
-The core principle of the project is:
-
-> **A deployment should only be trusted when its artifact, audit approval, signature, and on-chain bytecode all agree.**
-
-This creates a cryptographic chain of custody from the compiled artifact to the contract actually deployed on Sepolia.
-
----
-
 #  Team
 
-**Team SoanPapdi**
+**Made By  SoanPapdi**
 
-Built as a security-focused reference implementation for verifiable smart-contract deployments.
 
 ---
 
