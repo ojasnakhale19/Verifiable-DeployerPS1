@@ -1,0 +1,6 @@
+export interface AuditApproval { auditor:string; artifactHash:string; version:string; timestamp:number }
+export interface Deployment { contractAddress:string; chainId:number; artifactHash:string; runtimeBytecodeHash:string; version:string; signerIdentity:string; rekorEntry?:string; auditApproved:boolean; sigstoreVerified:boolean; bytecodeVerified:boolean; status:"TRUSTED"|"REJECTED"; reasons:string[]; timestamp:number }
+const audits: AuditApproval[]=[]; const deployments: Deployment[]=[];
+export const addAudit=(a:AuditApproval)=>{if(audits.some(x=>x.auditor===a.auditor&&x.artifactHash===a.artifactHash&&x.version===a.version))throw new Error("Approval already exists");audits.push(a);return a;};
+export const hasAudit=(artifactHash:string,version:string)=>audits.some(x=>x.artifactHash===artifactHash&&x.version===version);
+export const addDeployment=(d:Deployment)=>{if(deployments.some(x=>x.contractAddress.toLowerCase()===d.contractAddress.toLowerCase()&&x.chainId===d.chainId))throw new Error("Deployment already registered");deployments.push(d);return d;}; export const listDeployments=()=>[...deployments].sort((a,b)=>b.timestamp-a.timestamp); export const findDeployment=(address:string)=>deployments.find(x=>x.contractAddress.toLowerCase()===address.toLowerCase());

@@ -1,0 +1,2 @@
+import { Router } from "express"; import { inspectArtifact } from "../services/artifact/artifactService.js";
+const router=Router(); router.post("/hash",(req,res)=>{try{if(typeof req.body?.artifactPath!=="string")return res.status(400).json({error:"artifactPath is required"});return res.json(inspectArtifact(req.body.artifactPath));}catch(e){return res.status(400).json({error:e instanceof Error?e.message:"Invalid artifact"});}}); export default router;

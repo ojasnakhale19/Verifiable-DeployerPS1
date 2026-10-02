@@ -1,0 +1,1 @@
+export async function fetchRekorEntry(id:string){const base=process.env.REKOR_URL??"https://rekor.sigstore.dev";const response=await fetch(`${base}/api/v1/log/entries/${encodeURIComponent(id)}`);if(!response.ok)throw new Error(`Rekor returned ${response.status}`);return response.json();}
